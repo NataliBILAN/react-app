@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class SignInForm extends Component{
   state ={
     email: '',
-    password: ''
+    password: '',
   };
 
 handleInputChange = e => {

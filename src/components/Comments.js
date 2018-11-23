@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Comments extends Component {
     state = {
         text: '',
-        rate: ''
+        rate: '',
     }
 
     handleChange = e =>{

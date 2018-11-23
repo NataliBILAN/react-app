@@ -4,7 +4,7 @@ const INITIAL_STATE = {
     name: '',
     email: '',
     phone: '',
-    password: ''
+    password: '',
 }
 class SingUpForm extends Component{
 

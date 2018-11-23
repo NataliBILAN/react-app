@@ -23,7 +23,7 @@ const findDish = (filter, menu) =>{
 class App extends Component{
   state = {
     filter: '',
-    comments: []
+    comments: [],
   }
 
 
