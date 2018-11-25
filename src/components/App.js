@@ -51,19 +51,16 @@ class App extends Component {
           <Logo />
           <Nav />
           <UserMenu UserName="Homer Simpson" />
-        </header>{' '}
+        </header>
         <h2> Sing in </h2> <SignInForm />
         <hr />
         <h2> Sing up </h2> <SingUpForm />
         <hr />
         <OrderHistoryList orderHistory={orderHistory} /> <hr />
-        <DishFilter
-          filter={filter}
-          onFilterChange={this.handleFilterChange}
-        />{' '}
+        <DishFilter filter={filter} onFilterChange={this.handleFilterChange} />
         <DishesList menu={filteredMenu} /> <hr />
-        <Comments onSubmit={this.handleAddComments} />{' '}
-        <CommentList comments={comments} />{' '}
+        <Comments onSubmit={this.handleAddComments} />
+        <CommentList comments={comments} />
       </div>
     );
   }
