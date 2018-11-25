@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import v4 from 'uuid/v4';
 import Logo from './Logo';
 import Nav from './Nav';
 import UserMenu from './UserMenu';
@@ -11,14 +12,9 @@ import DishFilter from './DishFilter';
 import menu from '../menu.json';
 import Comments from './Comments';
 import CommentList from './CommentList';
-import v4 from 'uuid/v4';
 
-
-const findDish = (filter, menu) => {
-  return menu.filter(dish =>
-    dish.name.toLowerCase().includes(filter.toLowerCase())
-  );
-};
+const findDish = filter =>
+  menu.filter(dish => dish.name.toLowerCase().includes(filter.toLowerCase()));
 
 class App extends Component {
   state = {
@@ -26,15 +22,22 @@ class App extends Component {
     comments: [],
   };
 
-
-  handleFilterChange = (e) => {
+  handleFilterChange = e => {
     this.setState({
-      filter: e.target.value
+      filter: e.target.value,
     });
   };
+
   handleAddComments = (text, rate) => {
     this.setState(prevState => ({
-      comments: [{ id: v4(), text, rate }, ...prevState.comments]
+      comments: [
+        {
+          id: v4(),
+          text,
+          rate,
+        },
+        ...prevState.comments,
+      ],
     }));
   };
 
@@ -49,22 +52,19 @@ class App extends Component {
           <Nav />
           <UserMenu UserName="Homer Simpson" />
         </header>
-        <h2>Sing in</h2>
-        <SignInForm />
+        <h2> Sing in </h2> <SignInForm />
         <hr />
-        <h2>Sing up</h2>
-        <SingUpForm />
+        <h2> Sing up </h2> <SingUpForm />
         <hr />
-        <OrderHistoryList orderHistory={orderHistory} />
-        <hr />
+        <OrderHistoryList orderHistory={orderHistory} /> <hr />
         <DishFilter filter={filter} onFilterChange={this.handleFilterChange} />
-        <DishesList menu={filteredMenu} />
-        <hr />
+        <DishesList menu={filteredMenu} /> <hr />
         <Comments onSubmit={this.handleAddComments} />
         <CommentList comments={comments} />
       </div>
-    )
+    );
   }
 }
 
 export default App;
+
