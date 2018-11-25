@@ -14,41 +14,41 @@ import CommentList from './CommentList';
 import v4 from 'uuid/v4';
 
 
-const findDish = (filter, menu) =>{
-  return menu.filter(dish=>
+const findDish = (filter, menu) => {
+  return menu.filter(dish =>
     dish.name.toLowerCase().includes(filter.toLowerCase())
-    );
+  );
 };
 
-class App extends Component{
+class App extends Component {
   state = {
     filter: '',
     comments: [],
-  }
+  };
 
 
-  handleFilterChange= (e)=>{
+  handleFilterChange = (e) => {
     this.setState({
       filter: e.target.value
     });
   };
-  handleAddComments = (text, rate) =>{
-    this.setState(prevState=>({
+  handleAddComments = (text, rate) => {
+    this.setState(prevState => ({
       comments: [{ id: v4(), text, rate }, ...prevState.comments]
     }));
   };
-  
-  render(){
-    const {filter, comments} = this.state;
+
+  render() {
+    const { filter, comments } = this.state;
     const filteredMenu = findDish(filter, menu);
- 
-    return(
+
+    return (
       <div>
-      <header>
-        <Logo />
-        <Nav />
-        <UserMenu UserName="Homer Simpson" />
-      </header>
+        <header>
+          <Logo />
+          <Nav />
+          <UserMenu UserName="Homer Simpson" />
+        </header>
         <h2>Sing in</h2>
         <SignInForm />
         <hr />
@@ -60,8 +60,8 @@ class App extends Component{
         <DishFilter filter={filter} onFilterChange={this.handleFilterChange} />
         <DishesList menu={filteredMenu} />
         <hr />
-        <Comments onSubmit={this.handleAddComments}/>
-        <CommentList comments={comments} />        
+        <Comments onSubmit={this.handleAddComments} />
+        <CommentList comments={comments} />
       </div>
     )
   }
