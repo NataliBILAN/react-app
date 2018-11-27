@@ -1,12 +1,8 @@
 import React from 'react';
 
-const Logo = () => (
-  <a href="https://reactjs.org/">
-    <img
-      src="http://pngimg.com/uploads/donut/donut_PNG98.png"
-      alt="logo"
-      width="100"
-    />
+const Logo = ({ logoUrl, logoImg }) => (
+  <a href={logoUrl}>
+    <img src={logoImg} alt="logo" width="100" />
   </a>
 );
 
