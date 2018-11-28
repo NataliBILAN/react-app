@@ -10,6 +10,7 @@ import menu from '../menu.json';
 import Comments from './Comments';
 import CommentList from './CommentList';
 import Header from './Header';
+import Modal from './Modal';
 
 const findDish = filter =>
   menu.filter(dish => dish.name.toLowerCase().includes(filter.toLowerCase()));
@@ -46,6 +47,7 @@ class App extends Component {
     return (
       <div>
         <Header />
+        <Modal />
         <h2> Sing in </h2> <SignInForm />
         <hr />
         <h2> Sing up </h2> <SingUpForm />
