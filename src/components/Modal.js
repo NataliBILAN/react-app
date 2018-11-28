@@ -27,19 +27,16 @@ export default class Modal extends Component {
     return (
       <div style={styles.backdrop}>
         <div style={styles.modal}>
-          {' '}
           <p>
-            {' '}
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil
             ipsum obcaecati maiores ipsam harum distinctio quia, soluta
             voluptatibus iste deserunt consectetur totam quas quidem, aliquid
-            voluptatem nisi, nobis expedita quis?{' '}
+            voluptatem nisi, nobis expedita quis?
           </p>
           <button type="button" onClick={onClose}>
-            {' '}
-            Close{' '}
-          </button>{' '}
-        </div>{' '}
+            Close
+          </button>
+        </div>
       </div>
     );
   }
