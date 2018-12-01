@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 
 const styles = {
   backdrop: {
@@ -21,11 +21,39 @@ const styles = {
 };
 
 export default class Modal extends Component {
+  containerRef = createRef();
+
+  componentWillMount() {
+    window.removeEventListener('click', this.handleWindowClick);
+  }
+
+  componentDidMount() {
+    window.addEventListener('click', this.handleWindowClick);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { isModalOpen } = this.state;
+    return nextState.isModalOpen !== isModalOpen;
+  }
+
+  // handleWindowClick = e => {
+  //   // console.log(this.containerRef.current);
+  //   const isTargetInsideContainer = this.containerRef.current.contains(
+  //     e.target,
+  //   );
+  //   // console.log(isTargetInsideContainer);
+  //   const { isModalOpen } = this.state;
+  //   const { onClose } = this.props;
+  //   if (isModalOpen && !isTargetInsideContainer) {
+  //     onClose();
+  //   }
+  // };
+
   render() {
     const { onClose } = this.props;
 
     return (
-      <div style={styles.backdrop}>
+      <div style={styles.backdrop} onClick={onClose} ref={this.containerRef}>
         <div style={styles.modal}>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OrderHistoryList = ({ orderHistory }) => (
+const OrderHistoryList = ({ orderHistory, onDelete, onShowMoreInfo }) => (
   <table>
     <thead>
       <tr>
@@ -17,6 +17,16 @@ const OrderHistoryList = ({ orderHistory }) => (
           <td>{order.price}</td>
           <td>{order.address}</td>
           <td>{order.rating}</td>
+          <td>
+            <button type="button" onClick={() => onDelete(order.id)}>
+              Удалить
+            </button>
+          </td>
+          <td>
+            <button type="button" onClick={() => onShowMoreInfo(order.id)}>
+              Детальнее
+            </button>
+          </td>
         </tr>
       ))}
     </tbody>
