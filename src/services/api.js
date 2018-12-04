@@ -10,4 +10,7 @@ const getOrdersById = id =>
 const deleteOrder = id =>
   axios.delete(`${BASE_URL}/${id}`).then(response => response.status === 200);
 
-export { getAllOrders, getOrdersById, deleteOrder };
+const addNewOrder = order =>
+  axios.post(BASE_URL, order).then(response => response.data);
+
+export { getAllOrders, getOrdersById, deleteOrder, addNewOrder };

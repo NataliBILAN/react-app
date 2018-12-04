@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import * as API from '../services/api';
 import OrderHistoryList from './OrderHistoryList';
+import OrderMoreInfo from './OrderMoreInfo';
+import AddOrder from './AddOrder';
 
 class App extends Component {
   state = {
     orders: [],
+    isModalOpen: false,
   };
 
   componentDidMount() {
@@ -23,31 +26,46 @@ class App extends Component {
   };
 
   handleMoreInfo = id => {
-    API.getOrdersById(id);
+    API.getOrdersById(id).then(order => {
+      console.log(order);
+    });
+    this.openModal();
+  };
+  // isOk => {
+  //   if (!isOk) return;
+  //   this.setState(state => ({
+  //     orders: state.orders.filter(order => order.id === id),
+  //   }));
+
+  handleAddNewOrder = item => {
+    API.addNewOrder(item).then(newItem => {
+      this.setState(prevState => ({
+        orders: [...prevState.orders, newItem],
+      }));
+    });
+    console.log(this.state);
   };
 
-  // openModal = () => {
-  //   this.setState({
-  //     isModalOpen: true,
-  //   });
-  // };
+  openModal = () => {
+    this.setState({
+      isModalOpen: true,
+    });
+  };
 
-  // closeModal = () => {
-  //   this.setState({
-  //     isModalOpen: false,
-  //   });
-  // };
+  closeModal = () => {
+    this.setState({
+      isModalOpen: false,
+    });
+  };
 
   render() {
-    const { orders } = this.state;
+    const { orders, isModalOpen } = this.state;
 
     return (
       <div>
-        {/* <Header />
-        <button type="button" onClick={this.openModal}>
-          Open Modal
-        </button>
-        {isModalOpen && <Modal onClose={this.closeModal} />} */}
+        {isModalOpen && (
+          <OrderMoreInfo onClose={this.closeModal} orderHistory={orders} />
+        )}
 
         <h2>Orders history</h2>
         <OrderHistoryList
@@ -55,6 +73,7 @@ class App extends Component {
           onDelete={this.handleDeleteOrder}
           onShowMoreInfo={this.handleMoreInfo}
         />
+        <AddOrder onAddNewOrder={this.handleAddNewOrder} />
       </div>
     );
   }
