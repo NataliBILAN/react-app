@@ -24,36 +24,32 @@ export default class Modal extends Component {
   containerRef = createRef();
 
   componentWillMount() {
-    window.removeEventListener('click', this.handleWindowClick);
+    window.removeEventListener('keydown', this.handleEscape);
   }
 
   componentDidMount() {
-    window.addEventListener('click', this.handleWindowClick);
+    window.addEventListener('keydown', this.handleEscape);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    const { isModalOpen } = this.state;
-    return nextState.isModalOpen !== isModalOpen;
-  }
+  handleBackDropClick = e => {
+    if (e.target !== this.containerRef.current) return;
+    this.props.onClose();
+  };
 
-  // handleWindowClick = e => {
-  //   // console.log(this.containerRef.current);
-  //   const isTargetInsideContainer = this.containerRef.current.contains(
-  //     e.target,
-  //   );
-  //   // console.log(isTargetInsideContainer);
-  //   const { isModalOpen } = this.state;
-  //   const { onClose } = this.props;
-  //   if (isModalOpen && !isTargetInsideContainer) {
-  //     onClose();
-  //   }
-  // };
+  handleEscape = e => {
+    if (e.code !== 'Escape') return;
+    this.props.onClose();
+  };
 
   render() {
     const { onClose } = this.props;
 
     return (
-      <div style={styles.backdrop} onClick={onClose} ref={this.containerRef}>
+      <div
+        style={styles.backdrop}
+        onClick={this.handleBackDropClick}
+        ref={this.containerRef}
+      >
         <div style={styles.modal}>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil
