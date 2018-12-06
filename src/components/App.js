@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import * as API from '../services/api';
 import OrderHistoryList from './OrderHistoryList';
-import OrderMoreInfo from './OrderMoreInfo';
+import OrderModal from './OrderModal';
 import AddOrder from './AddOrder';
+import OrderModalContent from './OrderModalContent';
+import Spinner from './Spinner';
 
 class App extends Component {
   state = {
     orders: [],
-    isModalOpen: false,
+    selected: null,
+    isLoading: false,
   };
 
   componentDidMount() {
@@ -26,16 +29,16 @@ class App extends Component {
   };
 
   handleMoreInfo = id => {
+    this.setState({ isLoading: true });
     API.getOrdersById(id).then(order => {
-      console.log(order);
+      // console.log(order);
+      this.setState({
+        selected: order,
+        isLoading: false,
+      });
     });
     this.openModal();
   };
-  // isOk => {
-  //   if (!isOk) return;
-  //   this.setState(state => ({
-  //     orders: state.orders.filter(order => order.id === id),
-  //   }));
 
   handleAddNewOrder = item => {
     API.addNewOrder(item).then(newItem => {
@@ -43,30 +46,31 @@ class App extends Component {
         orders: [...prevState.orders, newItem],
       }));
     });
-    console.log(this.state);
   };
 
   openModal = () => {
     this.setState({
-      isModalOpen: true,
+      selected: true,
     });
   };
 
   closeModal = () => {
     this.setState({
-      isModalOpen: false,
+      selected: null,
     });
   };
 
   render() {
-    const { orders, isModalOpen } = this.state;
+    const { orders, selected, isLoading } = this.state;
 
     return (
       <div>
-        {isModalOpen && (
-          <OrderMoreInfo onClose={this.closeModal} orderHistory={orders} />
+        {isLoading && <Spinner />}
+        {selected && (
+          <OrderModal onClose={this.closeModal} orderHistory={orders}>
+            <OrderModalContent selectedItem={selected} />
+          </OrderModal>
         )}
-
         <h2>Orders history</h2>
         <OrderHistoryList
           orderHistory={orders}
@@ -78,5 +82,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

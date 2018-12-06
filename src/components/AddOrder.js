@@ -13,17 +13,40 @@ export default class AddOrder extends Component {
     });
   };
 
+  handleOnSubmit = e => {
+    e.preventDefault();
+
+    const newItem = {
+      date: Date.now(),
+      price: this.state.price,
+      address: this.state.address,
+      rating: this.state.rating,
+    };
+    console.log(newItem);
+    this.props.onAddNewOrder(newItem);
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({
+      address: '',
+      price: '',
+      rating: '',
+    });
+  };
+
   render() {
-    const { address, price, rating, onAddNewOrder } = this.state;
+    const { address, price, rating } = this.state;
 
     return (
-      <form onSubmit={onAddNewOrder}>
+      <form onSubmit={this.handleOnSubmit}>
         <input
           type="text"
           value={address}
           name="address"
           onChange={this.handleChange}
           placeholder="Enter your address"
+          required
         />
         <input
           type="number"
@@ -31,6 +54,7 @@ export default class AddOrder extends Component {
           name="price"
           onChange={this.handleChange}
           placeholder="Price"
+          required
         />
         <input
           type="number"
@@ -38,6 +62,7 @@ export default class AddOrder extends Component {
           name="rating"
           onChange={this.handleChange}
           placeholder="Rating"
+          required
         />
 
         <button type="submit">Add new order</button>
