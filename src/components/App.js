@@ -1,36 +1,24 @@
-import React, { Component } from 'react';
-import Header from './Header';
-import Modal from './Modal';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import Nav from './Nav';
+import PageNotFound from '../pages/PageNotFound';
+import ArticlesPage from '../pages/ArticlesPage';
+import About from '../pages/About';
+import Home from '../pages/Home';
+import ArticlePage from '../pages/ArticlePage';
 
-class App extends Component {
-  state = {
-    isModalOpen: false,
-  };
+const App = () => (
+  <>
+    <h1>Basics of routing</h1>
+    <Nav />
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/articles/:id" component={ArticlePage} />
+      <Route path="/articles" component={ArticlesPage} />
 
-  openModal = () => {
-    this.setState({
-      isModalOpen: true,
-    });
-  };
-
-  closeModal = () => {
-    this.setState({
-      isModalOpen: false,
-    });
-  };
-
-  render() {
-    const { isModalOpen } = this.state;
-    return (
-      <div>
-        <Header />
-        <button type="button" onClick={this.openModal}>
-          Open Modal
-        </button>
-        {isModalOpen && <Modal onClose={this.closeModal} />}
-      </div>
-    );
-  }
-}
-
+      <Route path="/about" component={About} />
+      <Route component={PageNotFound} />
+    </Switch>
+  </>
+);
 export default App;
