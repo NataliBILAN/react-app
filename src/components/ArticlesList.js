@@ -1,15 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const ArticlesList = ({ articles, match }) => (
+const ArticlesList = ({ articles, match, location }) => (
   <>
     <ul>
       {articles.map(article => (
         <li key={article.id}>
-          <Link to={`${match.url}/${article.id}`}>{article.title}</Link>
+          <Link
+            to={{
+              pathname: `${match.url}/${article.id}`,
+              state: { from: location },
+            }}
+          >
+            {article.title}
+          </Link>
         </li>
       ))}
     </ul>
   </>
 );
-export default ArticlesList;
+export default withRouter(ArticlesList);

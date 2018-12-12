@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import * as api from '../api/api';
 
 export default class ArticlePage extends Component {
-  // state = {
-  //   article: {
-  //     id: null,
-  //     title: null,
-  //     imageUrl: null,
-  //     author: null,
-  //     category: null,
-  //     body: null,
-  //   },
-  // };
+  state = {
+    title: null,
+    imageUrl: null,
+    author: null,
+    category: null,
+    body: null,
+  };
 
   componentDidMount() {
     api.fetchArticleById(this.props.match.params.id).then(article =>
@@ -20,6 +17,20 @@ export default class ArticlePage extends Component {
       }),
     );
   }
+
+  handleGoBack = () => {
+    const { state } = this.props.location;
+    const { category } = this.state;
+
+    if (state) {
+      return this.props.history.push(state.from);
+    }
+
+    this.props.history.push({
+      pathname: '/articles',
+      search: `?category=${category}`,
+    });
+  };
 
   render() {
     const { title, imageUrl, author, category, body } = this.state;
@@ -35,6 +46,9 @@ export default class ArticlePage extends Component {
           <b>Category: {category}</b>
         </p>
         <p>{body}</p>
+        <button type="button" onClick={this.handleGoBack}>
+          Go back to articles
+        </button>
       </article>
     );
   }
