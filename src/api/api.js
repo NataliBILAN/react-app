@@ -1,26 +1,23 @@
-import articles from './data';
+import axios from 'axios';
 
-export const fetchAllArticles = () =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      resolve([...articles]);
-    }, 200);
-  });
+axios.defaults.baseURL = 'http://localhost:3000';
 
-export const fetchArticleById = id =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      const article = articles.find(a => a.id === id);
-      resolve(article);
-    }, 200);
-  });
+export const getAllMenuItems = async () => {
+  const response = await axios.get('/menu');
+  return response.data;
+};
 
-export const fetchArticlesByCategory = category =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      if (category === 'all') resolve(articles);
+export const getCategories = async () => {
+  const response = await axios.get('/categories');
+  return response.data;
+};
 
-      const data = articles.filter(a => a.category === category);
-      resolve(data);
-    }, 200);
-  });
+export const getMenuItemById = async id => {
+  const response = await axios.get(`/menu/${id}`);
+  return response.data;
+};
+
+export const getMenuItemsWithCategory = async category => {
+  const response = await axios.get(`/menu?category=${category}`);
+  return response.data;
+};

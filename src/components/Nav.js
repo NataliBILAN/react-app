@@ -10,17 +10,12 @@ const Nav = () => (
   <ul>
     <li>
       <NavLink to="/" activeStyle={styles.activeLink} exact>
-        Home
+        Главная
       </NavLink>
     </li>
     <li>
-      <NavLink to="/articles" activeStyle={styles.activeLink}>
-        Articles
-      </NavLink>
-    </li>
-    <li>
-      <NavLink to="/about" activeStyle={styles.activeLink}>
-        About
+      <NavLink to="/menu" activeStyle={styles.activeLink}>
+        Меню
       </NavLink>
     </li>
   </ul>
