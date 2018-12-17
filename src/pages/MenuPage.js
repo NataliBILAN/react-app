@@ -5,6 +5,7 @@ import AllDishes from '../components/AllDishes';
 import CategorySelector from '../components/CategorySelector';
 import * as API from '../api/api';
 import CurrentFilter from '../components/CurrentFilter';
+import AddNewDish from '../components/AddNewDish';
 
 const getCategoryFromProps = props =>
   queryString.parse(props.location.search).category;
@@ -72,6 +73,7 @@ export default class MenuPage extends Component {
           onChange={this.onCategoryChange}
         />
         <CurrentFilter category={currentValue} onClear={this.onClearFilter} />
+        <AddNewDish />
         <AllDishes menu={menu} match={match} />
       </>
     );

@@ -34,7 +34,14 @@ export default class DishPage extends Component {
   };
 
   render() {
-    const { name, description, image, price, ingredients } = this.state;
+    const {
+      name,
+      description,
+      image,
+      price,
+      ingredients,
+      category,
+    } = this.state;
     return (
       <div>
         <img src={image} alt={name} width="200" />
@@ -42,6 +49,7 @@ export default class DishPage extends Component {
         <p>{description}</p>
         <p>Price: {price}</p>
         <p>Ingredients: {ingredients}</p>
+        <p>Category:{category}</p>
         <button type="button" onClick={this.handleGoBack}>
           Назад к меню
         </button>
