@@ -17,9 +17,7 @@ const AllDishes = ({ menu, match, location }) => (
               image={dish.image}
               alt={dish.name}
               name={dish.name}
-              description={dish.description}
               price={dish.price}
-              ingredients={dish.ingredients}
             />
           </Link>
         </li>

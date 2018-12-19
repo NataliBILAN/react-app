@@ -38,7 +38,9 @@ export default class MenuPage extends Component {
     console.log('nextCategory: ', nextCategory);
 
     if (prevCategory === nextCategory) return;
-    this.fetchCategory(nextCategory);
+    API.getMenuItemsWithCategory(nextCategory).then(menu =>
+      this.setState({ menu }),
+    );
   }
 
   fetchCategory = category => {
@@ -60,10 +62,19 @@ export default class MenuPage extends Component {
     });
   };
 
+  handleAddNewDish = dish => {
+    API.addNewDish(dish).then(newDish => {
+      this.setState(prevState => ({
+        menu: [...prevState.menu, newDish],
+      }));
+    });
+  };
+
   render() {
     const { menu, categories } = this.state;
     const { match } = this.props;
     const currentValue = getCategoryFromProps(this.props);
+    console.log(currentValue);
     return (
       <>
         <h2>Our menu</h2>
@@ -72,7 +83,10 @@ export default class MenuPage extends Component {
           value={currentValue}
           onChange={this.onCategoryChange}
         />
-        <CurrentFilter category={currentValue} onClear={this.onClearFilter} />
+        {currentValue === undefined ? null : (
+          <CurrentFilter category={currentValue} onClear={this.onClearFilter} />
+        )}
+
         <AddNewDish />
         <AllDishes menu={menu} match={match} />
       </>
