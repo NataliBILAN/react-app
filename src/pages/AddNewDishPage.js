@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+// import Select from 'react-select';
 import * as API from '../api/api';
+import CategorySelector from '../components/CategorySelector';
 
 export default class AddNewDishPage extends Component {
   state = {
@@ -10,12 +12,11 @@ export default class AddNewDishPage extends Component {
     ingredients: '',
     category: '',
     price: '',
-    categories: [],
   };
 
-  componentDidMount() {
-    API.getCategories().then(items => this.setState({ categories: items }));
-  }
+  // componentDidMount() {
+  //   API.getCategories().then(items => this.setState({ categories: items }));
+  // }
 
   handleChange = e => {
     this.setState({
@@ -31,7 +32,7 @@ export default class AddNewDishPage extends Component {
       name: this.state.name,
       description: this.state.description,
       ingredients: this.state.ingredients,
-      category: this.state.category,
+      category: this.state.category.value,
       price: this.state.price,
     };
     console.log(newDish);
@@ -52,15 +53,18 @@ export default class AddNewDishPage extends Component {
     });
   };
 
+  handleChooseCategory = category => {
+    this.setState({ category });
+  };
+
   render() {
-    const {
-      name,
-      description,
-      ingredients,
-      price,
-      category,
-      categories,
-    } = this.state;
+    const { name, description, ingredients, price, category } = this.state;
+    // const options = [
+    //   { value: 'soup', label: 'soup' },
+    //   { value: 'dessert', label: 'dessert' },
+    //   { value: 'salad', label: 'salad' },
+    //   { value: 'main course', label: 'main course' },
+    // ];
     return (
       <>
         <h2>Добавить новое блюдо</h2>
@@ -91,14 +95,11 @@ export default class AddNewDishPage extends Component {
             placeholder="Ingredients"
             required
           />
-          <select name="category" value={category} onChange={this.handleChange}>
-            {categories.map(opt => (
-              <option key={opt.id} value={opt.name}>
-                {opt.name}
-              </option>
-            ))}
-          </select>
 
+          <CategorySelector
+            value={category}
+            onChange={this.handleChooseCategory}
+          />
           <input
             type="number"
             value={price}

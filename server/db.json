@@ -140,24 +140,6 @@
       "ingredients": "Fish",
       "price": "150",
       "id": 10
-    },
-    {
-      "image": "https://images.pexels.com/photos/928475/pexels-photo-928475.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-      "name": "LoL",
-      "description": "Сладости",
-      "ingredients": "Шоколад, сахар, мука",
-      "category": "dessert",
-      "price": "50",
-      "id": 11
-    },
-    {
-      "image": "https://images.pexels.com/photos/928475/pexels-photo-928475.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-      "name": "LoL",
-      "description": "Fish",
-      "ingredients": "Fish",
-      "category": "main course",
-      "price": "75",
-      "id": 12
     }
   ],
   "categories": [

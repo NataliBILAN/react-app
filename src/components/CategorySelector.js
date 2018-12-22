@@ -8,14 +8,11 @@ const options = [
   { value: 'main course', label: 'main course' },
 ];
 const CategorySelector = ({ value, onChange }) => (
-  // <Select value={value} onChange={e => onChange(e.target.value)}>
-  //   {options.map(opt => (
-  //     <option key={opt.id} value={opt.name}>
-  //       {opt.name}
-  //     </option>
-  //   ))}
-  // </Select>
-
-  <Select value={value} onChange={onChange} options={options} />
+  <Select
+    value={value}
+    onChange={onChange}
+    options={options}
+    placeholder="Категория"
+  />
 );
 export default CategorySelector;

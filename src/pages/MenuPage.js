@@ -14,20 +14,28 @@ export default class MenuPage extends Component {
   state = {
     menu: [],
     category: null,
+    loading: false,
+    error: null,
   };
 
-  componentDidMount() {
-    API.getAllMenuItems().then(items => this.setState({ menu: items }));
-    // API.getCategories().then(items => this.setState({ categories: items }));
-    const category = getCategoryFromProps(this.props);
+  async componentDidMount() {
+    this.setState({ loading: true });
+    try {
+      await API.getAllMenuItems().then(items => this.setState({ menu: items }));
+      this.setState({ loading: false });
+      const category = getCategoryFromProps(this.props);
 
-    if (!category) {
-      return this.props.history.replace({
-        pathname: this.props.location.pathname,
-        search: ``,
-      });
+      if (!category) {
+        return this.props.history.replace({
+          pathname: this.props.location.pathname,
+          search: ``,
+        });
+      }
+      this.fetchCategory(category);
+    } catch (error) {
+      this.setState({ error, loading: false });
     }
-    this.fetchCategory(category);
+    // API.getCategories().then(items => this.setState({ categories: items }));
   }
 
   componentDidUpdate(prevProps) {
@@ -61,7 +69,7 @@ export default class MenuPage extends Component {
       search: `category=${category.value}`,
     });
     this.setState({ category: category.value });
-    console.log(category);
+    // console.log(category);
   };
 
   handleAddNewDish = dish => {
@@ -73,7 +81,7 @@ export default class MenuPage extends Component {
   };
 
   render() {
-    const { menu, category } = this.state;
+    const { menu, category, loading, error } = this.state;
     const { match } = this.props;
     const currentValue = getCategoryFromProps(this.props);
     console.log(currentValue);
@@ -88,6 +96,8 @@ export default class MenuPage extends Component {
 
         <AddNewDish />
         <AllDishes menu={menu} match={match} />
+        {loading && <h1>Loading....</h1>}
+        {error && <h1>Error!</h1>}
       </>
     );
   }
