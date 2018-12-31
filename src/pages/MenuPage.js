@@ -13,7 +13,7 @@ const getCategoryFromProps = props =>
 export default class MenuPage extends Component {
   state = {
     menu: [],
-    category: null,
+
     loading: false,
     error: null,
   };
@@ -21,21 +21,21 @@ export default class MenuPage extends Component {
   async componentDidMount() {
     this.setState({ loading: true });
     try {
-      await API.getAllMenuItems().then(items => this.setState({ menu: items }));
-      this.setState({ loading: false });
-      const category = getCategoryFromProps(this.props);
+      const items = await API.getAllMenuItems();
+      this.setState({ menu: items, loading: false });
 
-      if (!category) {
-        return this.props.history.replace({
-          pathname: this.props.location.pathname,
-          search: ``,
-        });
-      }
-      this.fetchCategory(category);
+      // const category = getCategoryFromProps(this.props);
+
+      // if (!category) {
+      //   return this.props.history.replace({
+      //     pathname: this.props.location.pathname,
+      //     search: ``,
+      //   });
+      // }
+      // this.fetchCategory(category);
     } catch (error) {
       this.setState({ error, loading: false });
     }
-    // API.getCategories().then(items => this.setState({ categories: items }));
   }
 
   componentDidUpdate(prevProps) {
@@ -49,14 +49,18 @@ export default class MenuPage extends Component {
     API.getMenuItemsWithCategory(nextCategory).then(menu =>
       this.setState({ menu }),
     );
+
+    if (nextCategory === undefined) {
+      API.getAllMenuItems().then(menu => this.setState({ menu }));
+    }
   }
 
-  fetchCategory = category => {
-    API.getCategories(category).then(menu => this.setState({ menu }));
-  };
+  // fetchCategory = category => {
+  //   API.getCategories(category).then(menu => this.setState({ menu }));
+  // };
 
   onClearFilter = () => {
-    API.getAllMenuItems().then(menu => this.setState({ menu }));
+    // API.getAllMenuItems().then(menu => this.setState({ menu }));
     this.props.history.push({
       pathname: this.props.location.pathname,
       search: ``,
@@ -68,8 +72,7 @@ export default class MenuPage extends Component {
       pathname: this.props.location.pathname,
       search: `category=${category.value}`,
     });
-    this.setState({ category: category.value });
-    // console.log(category);
+    // this.setState({ category: category.value });
   };
 
   handleAddNewDish = dish => {
@@ -81,7 +84,7 @@ export default class MenuPage extends Component {
   };
 
   render() {
-    const { menu, category, loading, error } = this.state;
+    const { menu, loading, error } = this.state;
     const { match } = this.props;
     const currentValue = getCategoryFromProps(this.props);
     console.log(currentValue);
@@ -89,7 +92,10 @@ export default class MenuPage extends Component {
     return (
       <>
         <h2>Our menu</h2>
-        <CategorySelector value={category} onChange={this.onCategoryChange} />
+        <CategorySelector
+          value={currentValue}
+          onChange={this.onCategoryChange}
+        />
         {currentValue === undefined ? null : (
           <CurrentFilter category={currentValue} onClear={this.onClearFilter} />
         )}

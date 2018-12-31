@@ -12,8 +12,8 @@ const App = () => (
     <Nav />
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/menu/add" component={AddNewDishPage} />
-      <Route exact path="/menu/:id" component={DishPage} />
+      <Route exact path="/menu/add" component={AddNewDishPage} />
+      <Route path="/menu/:id" component={DishPage} />
       <Route path="/menu" component={MenuPage} />
 
       <Route component={PageNotFound} />
