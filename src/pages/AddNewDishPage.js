@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import Select from 'react-select';
+import * as API from '../api/api';
 
 import CategorySelector from '../components/CategorySelector';
 
@@ -32,6 +33,7 @@ export default class AddNewDishPage extends Component {
       price: this.state.price,
     };
     console.log(newDish);
+    API.addNewDish(newDish);
     // this.props.onAddNewDish(newDish); onAddNewDish={this.handleAddNewDish}
     this.onBack();
   };
