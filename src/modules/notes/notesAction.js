@@ -21,4 +21,26 @@ const filter = search => ({
   payload: search,
 });
 
-export default { addNote, deleteNote, toggleNote, filter };
+const fetchRequest = () => ({
+  type: types.FETCH_REQUEST,
+});
+
+const fetchSuccess = notes => ({
+  type: types.FETCH_SUCCESS,
+  payload: notes,
+});
+
+const fetchError = error => ({
+  type: types.FETCH_ERROR,
+  payload: error,
+});
+
+export default {
+  addNote,
+  deleteNote,
+  toggleNote,
+  filter,
+  fetchRequest,
+  fetchSuccess,
+  fetchError,
+};
