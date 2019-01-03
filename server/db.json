@@ -126,29 +126,6 @@
         "Легкий соевый соус",
         "Кунжутное масло"
       ]
-    },
-    {
-      "name": "greg",
-      "description": "",
-      "ingredients": "",
-      "price": "",
-      "id": 9
-    },
-    {
-      "name": "Fish",
-      "description": "Fish",
-      "ingredients": "Fish",
-      "price": "150",
-      "id": 10
-    },
-    {
-      "image": "https://images.pexels.com/photos/928475/pexels-photo-928475.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-      "name": "LoL",
-      "description": "Картошка фри...",
-      "ingredients": "Буряк,капуста,картошка",
-      "category": "main course",
-      "price": "200",
-      "id": 11
     }
   ],
   "categories": [

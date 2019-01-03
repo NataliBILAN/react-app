@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import Select from 'react-select';
-import * as API from '../api/api';
+import { addNewDish } from '../api/api';
 
 import CategorySelector from '../components/CategorySelector';
 
@@ -21,8 +21,8 @@ export default class AddNewDishPage extends Component {
     });
   };
 
-  handleOnSubmit = e => {
-    e.preventDefault();
+  handleOnSubmit = async evt => {
+    evt.preventDefault();
 
     const newDish = {
       image: this.state.image,
@@ -33,7 +33,7 @@ export default class AddNewDishPage extends Component {
       price: this.state.price,
     };
     console.log(newDish);
-    API.addNewDish(newDish);
+    await addNewDish(newDish);
     // this.props.onAddNewDish(newDish); onAddNewDish={this.handleAddNewDish}
     this.onBack();
   };

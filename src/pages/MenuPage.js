@@ -23,16 +23,6 @@ export default class MenuPage extends Component {
     try {
       const items = await API.getAllMenuItems();
       this.setState({ menu: items, loading: false });
-
-      // const category = getCategoryFromProps(this.props);
-
-      // if (!category) {
-      //   return this.props.history.replace({
-      //     pathname: this.props.location.pathname,
-      //     search: ``,
-      //   });
-      // }
-      // this.fetchCategory(category);
     } catch (error) {
       this.setState({ error, loading: false });
     }
@@ -49,18 +39,21 @@ export default class MenuPage extends Component {
     API.getMenuItemsWithCategory(nextCategory).then(menu =>
       this.setState({ menu }),
     );
-
     if (nextCategory === undefined) {
-      API.getAllMenuItems().then(menu => this.setState({ menu }));
+      this.fetchItems(nextCategory);
     }
   }
 
-  // fetchCategory = category => {
-  //   API.getCategories(category).then(menu => this.setState({ menu }));
-  // };
+  fetchItems = async category => {
+    try {
+      const items = await API.getAllMenuItems(category);
+      this.setState({ menu: items, loading: false });
+    } catch (error) {
+      this.setState({ error, loading: false });
+    }
+  };
 
   onClearFilter = () => {
-    // API.getAllMenuItems().then(menu => this.setState({ menu }));
     this.props.history.push({
       pathname: this.props.location.pathname,
       search: ``,
