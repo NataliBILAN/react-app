@@ -13,7 +13,7 @@ const getCategoryFromProps = props =>
 export default class MenuPage extends Component {
   state = {
     menu: [],
-
+    categories: [],
     loading: false,
     error: null,
   };
@@ -22,7 +22,9 @@ export default class MenuPage extends Component {
     this.setState({ loading: true });
     try {
       const items = await API.getAllMenuItems();
-      this.setState({ menu: items, loading: false });
+      const allCategories = await API.getCategories();
+      this.setState({ menu: items, categories: allCategories, loading: false });
+      console.log(this.state);
     } catch (error) {
       this.setState({ error, loading: false });
     }
@@ -60,12 +62,11 @@ export default class MenuPage extends Component {
     });
   };
 
-  onCategoryChange = category => {
+  handleCategoryChange = category => {
     this.props.history.push({
       pathname: this.props.location.pathname,
       search: `category=${category.value}`,
     });
-    // this.setState({ category: category.value });
   };
 
   handleAddNewDish = dish => {
@@ -77,7 +78,7 @@ export default class MenuPage extends Component {
   };
 
   render() {
-    const { menu, loading, error } = this.state;
+    const { menu, categories, loading, error } = this.state;
     const { match } = this.props;
     const currentValue = getCategoryFromProps(this.props);
     console.log(currentValue);
@@ -86,8 +87,9 @@ export default class MenuPage extends Component {
       <>
         <h2>Our menu</h2>
         <CategorySelector
-          value={currentValue}
-          onChange={this.onCategoryChange}
+          categories={categories}
+          // value={currentValue}
+          onChange={this.handleCategoryChange}
         />
         {currentValue === undefined ? null : (
           <CurrentFilter category={currentValue} onClear={this.onClearFilter} />
