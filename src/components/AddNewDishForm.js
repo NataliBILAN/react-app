@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-// import { addNewDish } from '../api/api';
-
 import CategorySelector from './CategorySelector';
 
 export default class AddNewDishForm extends Component {
@@ -13,7 +10,18 @@ export default class AddNewDishForm extends Component {
     ingredients: '',
     category: '',
     price: '',
+    categories: [],
   };
+
+  async componentDidMount() {
+    try {
+      const allCategories = await this.props.onGetCatergories();
+      this.setState({ categories: allCategories });
+      // console.log(this.state);
+    } catch (error) {
+      alert(error);
+    }
+  }
 
   handleChange = e => {
     this.setState({
@@ -50,13 +58,18 @@ export default class AddNewDishForm extends Component {
   };
 
   render() {
-    const { name, description, ingredients, price, category } = this.state;
-    // const options = [
-    //   { value: 'soup', label: 'soup' },
-    //   { value: 'dessert', label: 'dessert' },
-    //   { value: 'salad', label: 'salad' },
-    //   { value: 'main course', label: 'main course' },
-    // ];
+    const {
+      name,
+      description,
+      ingredients,
+      price,
+      category,
+      categories,
+    } = this.state;
+    const options = categories.map(cat => ({
+      value: cat.name,
+      label: cat.name,
+    }));
     return (
       <>
         <h2>Добавить новое блюдо</h2>
@@ -89,6 +102,7 @@ export default class AddNewDishForm extends Component {
           />
 
           <CategorySelector
+            options={options}
             value={category}
             onChange={this.handleChooseCategory}
           />

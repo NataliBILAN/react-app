@@ -10,6 +10,11 @@ import AddNewDish from '../components/AddNewDish';
 const getCategoryFromProps = props =>
   queryString.parse(props.location.search).category;
 
+// Передаем значение value, то что в урле храним
+// и ищем обьект с таким value
+const findCurrentOption = (options, value) =>
+  options.find(option => option.value === value);
+
 export default class MenuPage extends Component {
   state = {
     menu: [],
@@ -80,15 +85,22 @@ export default class MenuPage extends Component {
   render() {
     const { menu, categories, loading, error } = this.state;
     const { match } = this.props;
+    const options = categories.map(category => ({
+      value: category.name,
+      label: category.name,
+    }));
     const currentValue = getCategoryFromProps(this.props);
     console.log(currentValue);
+    const currentOption = findCurrentOption(options, currentValue);
+    console.log(currentOption);
+
     console.log(menu);
     return (
       <>
         <h2>Our menu</h2>
         <CategorySelector
-          categories={categories}
-          // value={currentValue}
+          options={options}
+          value={currentOption}
           onChange={this.handleCategoryChange}
         />
         {currentValue === undefined ? null : (

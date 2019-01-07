@@ -126,6 +126,24 @@
         "Легкий соевый соус",
         "Кунжутное масло"
       ]
+    },
+    {
+      "image": "https://images.pexels.com/photos/928475/pexels-photo-928475.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "name": "LoL",
+      "description": "Картошка фри...",
+      "ingredients": "Fish",
+      "category": "dessert",
+      "price": "1",
+      "id": 9
+    },
+    {
+      "image": "https://images.pexels.com/photos/928475/pexels-photo-928475.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "name": "Monobank",
+      "description": "Картошка фри...",
+      "ingredients": "Fish",
+      "category": "main course",
+      "price": "50",
+      "id": 10
     }
   ],
   "categories": [
