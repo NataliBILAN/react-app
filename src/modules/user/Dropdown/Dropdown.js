@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import userNav from '../../../configs/user-nav';
+import s from './Dropdown.module.css';
 
 const Dropdown = () => (
-  <div>
-    <ul>
+  <div className={s.dropdown}>
+    <ul className={s.user_menu}>
       {userNav.map(item => (
         <li key={item.name}>
-          <Link to={item.path}>{item.name}</Link>
+          <Link to={item.path} className={s.menu_item}>
+            {item.name}
+          </Link>
         </li>
       ))}
     </ul>

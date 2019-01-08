@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import AppHeader from './components/AppHeader/AppHeader';
-import MenuPage from './pages/Menu';
+import MenuPage from './pages/MenuPage/Menu';
 import MenuItemPage from './pages/Dish';
 import AboutPage from './pages/About';
 import ContactPage from './pages/Contact';

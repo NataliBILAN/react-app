@@ -1,0 +1,16 @@
+.dropdown {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background-color: #ffe6e6;
+}
+.user_menu {
+  list-style: none;
+}
+.menu_item {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Patrick Hand', cursive;
+  color: #5c007a;
+  font-size: 20px;
+}

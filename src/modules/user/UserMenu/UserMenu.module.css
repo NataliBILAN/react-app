@@ -1,0 +1,12 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: auto;
+}
+.user_name {
+  font-family: 'Patrick Hand', cursive;
+  color: #5c007a;
+  font-size: 16px;
+}
