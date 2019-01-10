@@ -1,0 +1,13 @@
+.search {
+  font-family: 'Thasadith', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #8080ff;
+  width: 300px;
+  padding: 6px 0 4px 10px;
+  border: 1px solid #000066;
+  background: #f6f6f6;
+  border-radius: 8px;
+  outline: transparent;
+  margin-bottom: 30px;
+}

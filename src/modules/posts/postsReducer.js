@@ -1,20 +1,17 @@
 import { combineReducers } from 'redux';
-import types from './notesActionTypes';
+import types from './postsActionTypes';
 
-function notesReducer(state = [], { type, payload }) {
+function postsReducer(state = [], { type, payload }) {
   switch (type) {
     case types.FETCH_SUCCESS:
+      return payload;
+    case types.GET_POST:
       return payload;
     case types.ADD_SUCCESS:
       return [...state, payload];
 
     case types.DELETE_SUCCESS:
       return state.filter(item => item.id !== payload);
-
-    case types.TOGGLE_COMPLETED_SUCCESS:
-      return state.map(item =>
-        item.id === payload ? { ...item, completed: !item.completed } : item,
-      );
 
     default:
       return state;
@@ -56,26 +53,9 @@ function errorReducer(state = null, { type, payload }) {
 }
 
 export default combineReducers({
-  items: notesReducer,
+  items: postsReducer,
+  // comments: commentsReducer,
   filter: filterReducer,
   loading: loadingReducer,
   error: errorReducer,
 });
-
-// делаем два редьюсера, чтобы получить такой state (1 часть(без асинхр.редакса))
-// {
-//   notes: {
-//     items: [],
-//       filter: '',
-// }
-// }
-
-// Когда делаем асинхронные операции, то стэйт такой:
-// {
-//   notes: {
-//     items: [],
-//       filter: '',
-//         loading: false,
-//           error: null,
-//   }
-// }

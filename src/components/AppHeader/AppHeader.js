@@ -1,9 +1,5 @@
 import React from 'react';
-import NoteFilter from '../NoteFilter';
+import s from './AppHeader.module.css';
 
-const AppHeader = () => (
-  <>
-    <NoteFilter />
-  </>
-);
+const AppHeader = () => <h2 className={s.title}>Lets discuss something!</h2>;
 export default AppHeader;

@@ -1,14 +1,25 @@
 import React from 'react';
-import NoteEditor from './components/NoteEditor';
+import { Route, Switch } from 'react-router-dom';
+
+import AllPostPage from './pages/AllPostPage';
+import PostPage from './pages/PostPage';
+import NotFoundPage from './pages/NotFoundPage';
 import AppHeader from './components/AppHeader/AppHeader';
-import NoteList from './components/NoteList';
+
+const wrapperStyle = {
+  padding: '8px 24px',
+  width: '1200px',
+  margin: '0 auto',
+};
 
 const App = () => (
-  <>
-    <h2>Create your goals</h2>
+  <div style={wrapperStyle}>
     <AppHeader />
-    <NoteEditor />
-    <NoteList />
-  </>
+    <Switch>
+      <Route path="/posts" component={AllPostPage} />
+      <Route path="/posts/:id" component={PostPage} />
+      <Route component={NotFoundPage} />
+    </Switch>
+  </div>
 );
 export default App;
