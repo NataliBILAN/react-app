@@ -1,9 +1,9 @@
-import React, { Component, createRef } from 'react';
+import React, { PureComponent, createRef } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import Avatar from '../Avatar/Avatar';
 import s from './UserMenu.module.css';
 
-export default class UserMenu extends Component {
+export default class UserMenu extends PureComponent {
   containerRef = createRef();
 
   state = {
@@ -14,11 +14,13 @@ export default class UserMenu extends Component {
     window.addEventListener('click', this.handleWindowClick);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    const { isDropdownOpen } = this.state;
+  // Использую PureComponent (когда стэйт -примитивы), либо-shouldComponentUpdate=>чтобы не было лишнего рендеринга компонента
 
-    return nextState.isDropdownOpen !== isDropdownOpen;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   const { isDropdownOpen } = this.state;
+
+  //   return nextState.isDropdownOpen !== isDropdownOpen;
+  // }
 
   componentWillUnmount() {
     window.removeEventListener('click', this.handleWindowClick);

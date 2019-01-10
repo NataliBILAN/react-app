@@ -5,7 +5,8 @@
 }
 .avatar_img {
   width: 100%;
+  height: auto;
   display: block;
   border-radius: 50%;
-  border: 2px solid pink;
+  border: 3px solid pink;
 }

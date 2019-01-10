@@ -65,6 +65,7 @@ class AllDishesContainer extends Component {
       pathname: this.props.location.pathname,
       search: ``,
     });
+    // reset???
   };
 
   handleCategoryChange = category => {
@@ -94,7 +95,6 @@ class AllDishesContainer extends Component {
     const currentOption = findCurrentOption(options, currentValue);
     console.log(currentOption);
 
-    console.log(menu);
     return (
       <>
         <CategorySelector
