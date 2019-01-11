@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => ({
   posts: postsSelectors.getPostById(state, ownProps),
 });
 const mapDispatchToProps = {
-  fetchPostsByID: postsOperations.fetchPostsByID,
+  // fetchPostsByID: postsOperations.fetchPostsByID,
   deleteComment: postsOperations.deleteComment,
   addComment: postsOperations.addComment,
   // updateComment
