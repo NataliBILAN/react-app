@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PostItem from './PostItem';
-import { postsOperations } from '../../modules/posts';
+import { postsOperations, postsSelectors } from '../../modules/posts';
 
 class PostItemContainer extends Component {
   componentDidMount() {
@@ -13,12 +13,12 @@ class PostItemContainer extends Component {
     return <PostItem {...this.props} />;
   }
 }
-const mapStateToProps = (state, ownProps) => ({
-  item: state.items.find(item => item.id === Number(ownProps.params.id)),
-});
-// const mapStateToProps = state => ({
-//   posts: postsSelectors.getPostById(state),
+// const mapStateToProps = (state, ownProps) => ({
+//   item: state.items.find(item => item.id === Number(ownProps.params.id)),
 // });
+const mapStateToProps = state => ({
+  posts: postsSelectors.getItems(state),
+});
 const mapDispatchToProps = {
   fetchPostsByID: postsOperations.fetchPostsByID,
   deleteComment: postsOperations.deleteComment,
