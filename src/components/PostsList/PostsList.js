@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import Post from './Post';
 import s from './PostsList.module.css';
 
-const PostsList = ({ posts = [], location }) => (
+const PostsList = ({ posts = [], match, location }) => (
   <ul className={s.list}>
     {posts.map(post => (
       <li key={post.id} className={s.list_item}>
         <Link
           to={{
-            pathname: `/posts/${post.id}`,
+            pathname: `${match.url}/${post.id}`,
             state: { from: location },
           }}
         >

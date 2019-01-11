@@ -2,7 +2,7 @@ import React from 'react';
 
 const PostItem = ({ title, body, deleteComment, addComment }) => (
   <article>
-    <p>{title}</p>
+    <p>What we discuss:{title}</p>
     <p>{body}</p>
     <button type="button" onClick={addComment}>
       Add comment

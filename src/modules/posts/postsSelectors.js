@@ -2,9 +2,9 @@ const getItems = state => state.posts.items;
 
 const getFilter = state => state.posts.filter;
 
-const getPostById = (state, ownProps) => {
+const getPostById = (state, id) => {
   const items = getItems(state);
-  return items.find(item => item.id === ownProps.id);
+  return items.find(item => item.id === id);
 };
 
 const getFilteredPosts = state => {

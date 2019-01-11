@@ -12,16 +12,16 @@ const fetchPosts = () => async dispatch => {
   }
 };
 
-const fetchPostsByID = id => async dispatch => {
-  dispatch(actions.fetchRequest());
+// const fetchPostsByID = id => async dispatch => {
+//   dispatch(actions.fetchRequest());
 
-  try {
-    await axios.get(`http://localhost:3000/posts/${id}`);
-    dispatch(actions.getById(id));
-  } catch (error) {
-    dispatch(actions.fetchError(error));
-  }
-};
+//   try {
+//     await axios.get(`http://localhost:3000/posts/${id}`);
+//     dispatch(actions.getById(id));
+//   } catch (error) {
+//     dispatch(actions.fetchError(error));
+//   }
+// };
 
 const addComment = body => async dispatch => {
   dispatch(actions.fetchRequest());
@@ -48,4 +48,4 @@ const deleteComment = id => async dispatch => {
 
 // updateComment
 
-export default { fetchPosts, fetchPostsByID, addComment, deleteComment };
+export default { fetchPosts, addComment, deleteComment };

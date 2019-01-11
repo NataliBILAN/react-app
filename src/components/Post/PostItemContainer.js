@@ -14,8 +14,8 @@ import { postsOperations, postsSelectors } from '../../modules/posts';
 //   }
 // }
 
-const mapStateToProps = (state, ownProps) => ({
-  posts: postsSelectors.getPostById(state, ownProps),
+const mapStateToProps = state => ({
+  posts: postsSelectors.getPostById(state),
 });
 const mapDispatchToProps = {
   // fetchPostsByID: postsOperations.fetchPostsByID,

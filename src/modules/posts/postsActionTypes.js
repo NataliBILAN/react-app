@@ -1,7 +1,7 @@
 const ADD_SUCCESS = 'posts/ADD_SUCCESS';
 const DELETE_SUCCESS = 'posts/DELETE_SUCCESS';
 const UPDATE_SUCCESS = 'posts/UPDATE_SUCCESS';
-const GET_POST = 'posts/GET_POST';
+// const GET_POST = 'posts/GET_POST';
 
 // синхронные операции:
 const CHANGE_FILTER = 'posts/CHANGE_FILTER';
@@ -14,7 +14,6 @@ export default {
   ADD_SUCCESS,
   DELETE_SUCCESS,
   UPDATE_SUCCESS,
-  GET_POST,
   CHANGE_FILTER,
   FETCH_REQUEST,
   FETCH_SUCCESS,

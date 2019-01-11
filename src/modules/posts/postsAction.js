@@ -14,10 +14,10 @@ const updateSuccess = id => ({
   type: types.UPDATE_SUCCESS,
   payload: id,
 });
-const getById = id => ({
-  type: types.GET_POST,
-  payload: id,
-});
+// const getById = id => ({
+//   type: types.GET_POST,
+//   payload: id,
+// });
 
 const filter = search => ({
   type: types.CHANGE_FILTER,
@@ -42,7 +42,6 @@ export default {
   addSuccess,
   deleteSuccess,
   updateSuccess,
-  getById,
   filter,
   fetchRequest,
   fetchSuccess,
