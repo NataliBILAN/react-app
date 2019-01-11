@@ -23,12 +23,12 @@ const fetchPostsByID = id => async dispatch => {
   }
 };
 
-const addComment = text => async dispatch => {
+const addComment = body => async dispatch => {
   dispatch(actions.fetchRequest());
   try {
     const response = await axios.post('http://localhost:3000/comments', {
-      text,
-      postId: Date.now,
+      body,
+      postId: '',
     });
     dispatch(actions.addSuccess(response.data));
   } catch (error) {

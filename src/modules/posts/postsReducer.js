@@ -17,6 +17,20 @@ function postsReducer(state = [], { type, payload }) {
       return state;
   }
 }
+function commentsReducer(state = [], { type, payload }) {
+  switch (type) {
+    case types.FETCH_SUCCESS:
+      return payload;
+    case types.ADD_SUCCESS:
+      return [...state, payload];
+
+    case types.DELETE_SUCCESS:
+      return state.filter(item => item.id !== payload);
+
+    default:
+      return state;
+  }
+}
 
 function filterReducer(state = '', { type, payload }) {
   switch (type) {
@@ -54,7 +68,7 @@ function errorReducer(state = null, { type, payload }) {
 
 export default combineReducers({
   items: postsReducer,
-  // comments: commentsReducer,
+  comments: commentsReducer,
   filter: filterReducer,
   loading: loadingReducer,
   error: errorReducer,
