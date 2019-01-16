@@ -1,24 +1,23 @@
 {
   "notes": [
     {
-      "text": "new note #3",
-      "completed": false,
-      "id": "DuS~IkS"
+      "id": "gWbQesB",
+      "completed": true
     },
     {
-      "text": "new note#1",
-      "completed": false,
-      "id": "3oevEf6"
+      "text": "note 11",
+      "completed": true,
+      "id": "qPesSwd"
     },
     {
-      "text": "Reduce sweets",
-      "completed": false,
-      "id": "IW4IXwm"
+      "text": "hello-hello",
+      "completed": true,
+      "id": "VM62rWn"
     },
     {
-      "text": "note bla-bla",
+      "text": "error",
       "completed": false,
-      "id": "gWbQesB"
+      "id": "7koiEs5"
     }
   ]
 }
