@@ -35,11 +35,12 @@ const deleteNote = id => async dispatch => {
   }
 };
 
-const toggleNoteSuccess = id => async dispatch => {
+const toggleNoteSuccess = (id, item) => async dispatch => {
   dispatch(actions.fetchRequest());
   try {
     await axios.patch(`http://localhost:3000/notes/${id}`, {
-      completed: true,
+      ...item,
+      completed: !item.completed,
     });
     dispatch(actions.toggleNote(id));
   } catch (error) {

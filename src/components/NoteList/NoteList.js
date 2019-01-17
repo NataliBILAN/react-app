@@ -8,7 +8,7 @@ const NoteList = ({ notes = [], deleteNote, toggleNote }) => (
         key={note.id}
         {...note}
         onDelete={() => deleteNote(note.id)}
-        onToggleComplete={() => toggleNote(note.id)}
+        onToggleComplete={() => toggleNote(note.id, note)}
       />
     ))}
   </div>
