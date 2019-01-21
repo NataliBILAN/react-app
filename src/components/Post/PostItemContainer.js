@@ -15,7 +15,7 @@ import { postsOperations, postsSelectors } from '../../modules/posts';
 // }
 
 const mapStateToProps = (state, props) => ({
-  item: postsSelectors.getPostById(state, props.id),
+  item: postsSelectors.getPostById(state, props.match.params.id),
 });
 const mapDispatchToProps = {
   // fetchPostsByID: postsOperations.fetchPostsByID,
