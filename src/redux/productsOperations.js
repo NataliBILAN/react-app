@@ -8,6 +8,7 @@ export const fetchProducts = () => async dispatch => {
     const response = await axios.get('http://localhost:3000/menu');
     dispatch(actions.fetchSuccess(response.data));
   } catch (error) {
+    console.log(error);
     dispatch(actions.fetchError(error));
   }
 };

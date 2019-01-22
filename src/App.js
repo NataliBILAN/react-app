@@ -1,7 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Products from './components/Products/ProductsListContainer';
+import Cart from './components/Cart/CartContainer';
 import Navigation from './components/Navigation';
+import CartLink from './components/CartLink/CartLinkContainer';
 
 const wrapperStyle = {
   padding: '24px',
@@ -13,9 +15,10 @@ const wrapperStyle = {
 const App = () => (
   <div style={wrapperStyle}>
     <Navigation />
+    <CartLink />
     <Switch>
       <Route exact path="/" component={Products} />
-      {/* <Route path="/cart" component={Cart} /> */}
+      <Route path="/cart" component={Cart} />
     </Switch>
   </div>
 );

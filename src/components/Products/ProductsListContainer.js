@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProductsListView from './ProductsListView';
 import { fetchProducts } from '../../redux/productsOperations';
-// import { getProducts } from '../../redux/selectors';
+import { getProducts } from '../../redux/selectors';
+import { addToCart } from '../../redux/actions';
 
 class ProductsListContainer extends Component {
   componentDidMount() {
@@ -10,18 +11,23 @@ class ProductsListContainer extends Component {
   }
 
   render() {
-    return <ProductsListView products={this.props.products} />;
+    return (
+      <ProductsListView
+        products={this.props.products}
+        addToCart={this.props.addToCart}
+      />
+    );
   }
 }
-
-// const mstp = state => ({
-//   products: getProducts(state),
-// });
+const mstp = state => ({
+  products: getProducts(state),
+});
 const mdtp = {
   fetchProducts,
+  addToCart,
 };
 
 export default connect(
-  null,
+  mstp,
   mdtp,
 )(ProductsListContainer);

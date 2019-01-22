@@ -5,11 +5,11 @@ const getProductIds = state => state.products;
 
 const getProductsEntities = state => state.entities.products;
 
-const getProducts = createSelector(
+export const getProducts = createSelector(
   [getProductIds, getProductsEntities],
   (ids, entities) => ids.map(id => entities[id]),
 );
-export default getProducts;
+// export default getProducts;
 
 // Cart
 

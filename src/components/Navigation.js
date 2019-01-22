@@ -6,9 +6,9 @@ const Navigation = () => (
     <li>
       <Link to="/">Products</Link>
     </li>
-    <li>
+    {/* <li>
       <Link to="/cart">Cart</Link>
-    </li>
+    </li> */}
   </ul>
 );
 export default Navigation;
