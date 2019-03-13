@@ -7,7 +7,7 @@ import {
   signInSuccess,
   signInError,
   signOutRequest,
-  signOutSuccess
+  signOutSuccess,
 } from './actions';
 import * as selectors from './selectors';
 
@@ -39,8 +39,8 @@ export const signOut = () => (dispatch, getState) => {
 
   const config = {
     headers: {
-      Authorization: token
-    }
+      Authorization: token,
+    },
   };
 
   axios

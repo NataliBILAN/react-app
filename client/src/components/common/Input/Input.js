@@ -6,7 +6,7 @@ const Input = ({
   name = '',
   value = '',
   onChange = () => null,
-  placeholder = ''
+  placeholder = '',
 }) => (
   <input
     className={classes.input}

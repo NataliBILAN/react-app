@@ -13,7 +13,7 @@ class SignUpForm extends Component {
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -65,10 +65,10 @@ class SignUpForm extends Component {
 }
 
 const mapDispatch = {
-  onSubmit: operations.signUp
+  onSubmit: operations.signUp,
 };
 
 export default connect(
   null,
-  mapDispatch
+  mapDispatch,
 )(SignUpForm);

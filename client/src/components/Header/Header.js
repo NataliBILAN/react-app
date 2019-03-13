@@ -19,14 +19,14 @@ const Header = ({ isAuthenticated, user, onSignOut }) => (
 
 const mapState = state => ({
   isAuthenticated: selectors.isAuthenticated(state),
-  user: selectors.getUser(state)
+  user: selectors.getUser(state),
 });
 
 const mapDispatch = {
-  onSignOut: operations.signOut
+  onSignOut: operations.signOut,
 };
 
 export default connect(
   mapState,
-  mapDispatch
+  mapDispatch,
 )(Header);

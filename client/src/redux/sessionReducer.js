@@ -23,7 +23,7 @@ const user = (state = null, { type, payload }) => {
   }
 };
 
-const isAuthenticated = (state = false, { type, payload }) => {
+const isAuthenticated = (state = false, { type }) => {
   switch (type) {
     case actionTypes.SIGN_UP_SUCCESS:
     case actionTypes.SIGN_IN_SUCCESS:
@@ -39,7 +39,7 @@ const isAuthenticated = (state = false, { type, payload }) => {
   }
 };
 
-const token = (state = null, { type, payload }) => {
+const token = (state, { type, payload }) => {
   switch (type) {
     case actionTypes.SIGN_UP_SUCCESS:
     case actionTypes.SIGN_IN_SUCCESS:
@@ -58,5 +58,5 @@ const token = (state = null, { type, payload }) => {
 export default combineReducers({
   user,
   isAuthenticated,
-  token
+  token,
 });

@@ -8,45 +8,45 @@ export const actionTypes = {
   SIGN_OUT_REQUEST: 'session/SIGN_OUT_REQUEST',
   SIGN_OUT_SUCCESS: 'session/SIGN_OUT_SUCCESS',
   SIGN_OUT_ERROR: 'session/SIGN_OUT_ERROR',
-  GET_CURRENT: 'session/GET_CURRENT'
+  GET_CURRENT: 'session/GET_CURRENT',
 };
 
 export const signUpRequest = () => ({
-  type: actionTypes.SIGN_UP_REQUEST
+  type: actionTypes.SIGN_UP_REQUEST,
 });
 
 export const signUpSuccess = data => ({
   type: actionTypes.SIGN_UP_SUCCESS,
-  payload: data
+  payload: data,
 });
 
 export const signUpError = error => ({
   type: actionTypes.SIGN_UP_ERROR,
   payload: {
-    error
-  }
+    error,
+  },
 });
 
 export const signInRequest = () => ({
-  type: actionTypes.SIGN_IN_REQUEST
+  type: actionTypes.SIGN_IN_REQUEST,
 });
 
 export const signInSuccess = data => ({
   type: actionTypes.SIGN_IN_SUCCESS,
-  payload: data
+  payload: data,
 });
 
 export const signInError = error => ({
   type: actionTypes.SIGN_IN_ERROR,
   payload: {
-    error
-  }
+    error,
+  },
 });
 
 export const signOutRequest = () => ({
-  type: actionTypes.SIGN_OUT_REQUEST
+  type: actionTypes.SIGN_OUT_REQUEST,
 });
 
 export const signOutSuccess = () => ({
-  type: actionTypes.SIGN_OUT_SUCCESS
+  type: actionTypes.SIGN_OUT_SUCCESS,
 });

@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProductio
 import sessionReducer from './sessionReducer';
 
 const rootReducer = combineReducers({
-  session: sessionReducer
+  session: sessionReducer,
 });
 
 const middleware = [thunk];
