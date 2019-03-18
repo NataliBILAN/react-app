@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 import NoteEditor from './components/NoteEditor';
 import AppHeader from './components/AppHeader/AppHeader';
 import NoteList from './components/NoteList';
 
-const App = () => (
-  <Wrapper>
-    <Title>To-do list</Title>
-    <AppHeader />
-    <NoteEditor />
-    <NoteList />
-  </Wrapper>
-);
+class App extends Component {
+  onDragEnd = () => {};
+
+  render() {
+    return (
+      <Wrapper>
+        <Title>To-do list</Title>
+        <AppHeader />
+        <NoteEditor />
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          <NoteList />
+        </DragDropContext>
+      </Wrapper>
+    );
+  }
+}
 
 const Wrapper = styled.div`
   display: flex;

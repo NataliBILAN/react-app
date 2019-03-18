@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const NoteFilter = ({ value = '', onChange = () => null }) => (
   <Filter>
+    <i className="fas fa-search" />
     <Label>Find your task</Label>
     <Input
       type="text"
