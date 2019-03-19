@@ -47,4 +47,22 @@ const toggleNoteSuccess = (id, item) => async dispatch => {
     dispatch(actions.fetchError(error));
   }
 };
-export default { fetchNotes, addNote, deleteNote, toggleNoteSuccess };
+
+const orderListSuccess = (items, result) => async dispatch => {
+  dispatch(actions.fetchRequest());
+  try {
+    await axios.put('http://localhost:3000/notes', {
+      items,
+    });
+    dispatch(actions.orderList(result));
+  } catch (error) {
+    dispatch(actions.fetchError(error), console.log(error));
+  }
+};
+export default {
+  fetchNotes,
+  addNote,
+  deleteNote,
+  toggleNoteSuccess,
+  orderListSuccess,
+};

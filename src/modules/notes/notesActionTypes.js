@@ -1,6 +1,7 @@
 const ADD_SUCCESS = 'notes/ADD_SUCCESS';
 const DELETE_SUCCESS = 'notes/DELETE_SUCCESS';
 const TOGGLE_COMPLETED_SUCCESS = 'notes/TOGGLE_COMPLETED_SUCCESS';
+const REORDER_LIST = 'notes/REORDER_LIST';
 
 // синхронные операции:
 const CHANGE_FILTER = 'notes/CHANGE_FILTER';
@@ -17,4 +18,5 @@ export default {
   FETCH_REQUEST,
   FETCH_SUCCESS,
   FETCH_ERROR,
+  REORDER_LIST,
 };

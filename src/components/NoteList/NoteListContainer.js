@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NoteList from './NoteList';
-import { notesSelectors, notesOperations } from '../../modules/notes';
+import {
+  notesSelectors,
+  notesOperations,
+  // notesAction,
+} from '../../modules/notes';
 
 class NoteListContainer extends Component {
   componentDidMount() {
@@ -20,6 +24,7 @@ const mapDispatchToProps = {
   fetchNotes: notesOperations.fetchNotes,
   deleteNote: notesOperations.deleteNote,
   toggleNote: notesOperations.toggleNoteSuccess,
+  onDragEnd: notesOperations.orderListSuccess,
 };
 
 export default connect(

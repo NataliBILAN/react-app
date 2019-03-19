@@ -1,16 +1,6 @@
 {
   "notes": [
     {
-      "text": "Call mommy :)",
-      "completed": false,
-      "id": 2
-    },
-    {
-      "text": "Categorized todo lists",
-      "completed": false,
-      "id": 3
-    },
-    {
       "text": "Buy: coffee, milk, muffins",
       "completed": false,
       "id": 4
@@ -26,9 +16,14 @@
       "id": 6
     },
     {
-      "text": "feed a cat ",
+      "text": "Find  present for Emma",
       "completed": true,
       "id": 7
+    },
+    {
+      "text": "dghsffdghjk jmk km,",
+      "completed": false,
+      "id": 8
     }
   ]
 }

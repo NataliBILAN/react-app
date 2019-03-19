@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { DragDropContext } from 'react-beautiful-dnd';
 
 import NoteEditor from './components/NoteEditor';
 import AppHeader from './components/AppHeader/AppHeader';
@@ -15,9 +14,7 @@ class App extends Component {
         <Title>To-do list</Title>
         <AppHeader />
         <NoteEditor />
-        <DragDropContext onDragEnd={this.onDragEnd}>
-          <NoteList />
-        </DragDropContext>
+        <NoteList />
       </Wrapper>
     );
   }

@@ -11,7 +11,10 @@ import types from './notesActionTypes';
 //   type: types.DELETE,
 //   payload: id,
 // });
-
+const orderList = result => ({
+  type: types.REORDER_LIST,
+  payload: result,
+});
 const addSuccess = note => ({
   type: types.ADD_SUCCESS,
   payload: note,
@@ -54,4 +57,5 @@ export default {
   fetchRequest,
   fetchSuccess,
   fetchError,
+  orderList,
 };
