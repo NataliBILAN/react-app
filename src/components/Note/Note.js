@@ -13,7 +13,10 @@ const Note = ({ text, onDelete, onToggleComplete, completed, note, index }) => (
         {...provided.draggableProps}
         {...provided.dragHandleProps}
       >
-        <Task completed={completed}>{text}</Task>
+        <Wrap>
+          <i className="fas fa-thumbtack" />
+          <Task completed={completed}>{text}</Task>
+        </Wrap>
         <Footer>
           <Label>
             Done
@@ -42,6 +45,10 @@ const Wrapper = styled.div`
   background-color: ${props => (props.completed ? '#4DB6AC' : '#CFD8DC')};
 `;
 
+const Wrap = styled.div`
+  display: flex;
+`;
+
 const Footer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -49,7 +56,7 @@ const Footer = styled.div`
 const Task = styled.p`
   font-size: 28px;
   text-decoration: ${props => (props.completed ? 'line-through' : 'none')};
-  margin-bottom: 20px;
+  margin: 0 0 20px 20px;
 `;
 const Label = styled.label`
   font-size: 30px;

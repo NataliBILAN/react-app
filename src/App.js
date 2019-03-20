@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 `;
 const Title = styled.h1`
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 60px;
   width: 20%;
   text-align: center;
   padding: 0.2rem 1.2rem;

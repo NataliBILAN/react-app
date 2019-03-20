@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 const NoteFilter = ({ value = '', onChange = () => null }) => (
   <Filter>
-    <i className="fas fa-search" />
-    <Label>Find your task</Label>
+    <Wrap>
+      <Search className="fas fa-search" />
+      <Label>Find your task</Label>
+    </Wrap>
     <Input
       type="text"
       value={value}
@@ -13,6 +15,9 @@ const NoteFilter = ({ value = '', onChange = () => null }) => (
     />
   </Filter>
 );
+const Search = styled.i`
+  font-size: 30px;
+`;
 
 const Filter = styled.form`
   display: flex;
@@ -20,9 +25,14 @@ const Filter = styled.form`
   flex-direction: column;
   margin-bottom: 30px;
 `;
+const Wrap = styled.div`
+  display: flex;
+`;
+
 const Label = styled.label`
-  font-size: 30px;
+  font-size: 34px;
   text-transform: uppercase;
+  margin-left: 20px;
 `;
 const Input = styled.input`
   padding: 10px 20px;

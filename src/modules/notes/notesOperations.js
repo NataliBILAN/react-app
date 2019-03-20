@@ -48,11 +48,12 @@ const toggleNoteSuccess = (id, item) => async dispatch => {
   }
 };
 
-const orderListSuccess = (items, result) => async dispatch => {
+const orderListSuccess = result => async dispatch => {
   dispatch(actions.fetchRequest());
   try {
+    console.log(result);
     await axios.put('http://localhost:3000/notes', {
-      items,
+      ...result,
     });
     dispatch(actions.orderList(result));
   } catch (error) {

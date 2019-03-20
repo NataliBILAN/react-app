@@ -4,7 +4,7 @@ import NoteList from './NoteList';
 import {
   notesSelectors,
   notesOperations,
-  // notesAction,
+  notesAction,
 } from '../../modules/notes';
 
 class NoteListContainer extends Component {
@@ -24,7 +24,8 @@ const mapDispatchToProps = {
   fetchNotes: notesOperations.fetchNotes,
   deleteNote: notesOperations.deleteNote,
   toggleNote: notesOperations.toggleNoteSuccess,
-  onDragEnd: notesOperations.orderListSuccess,
+  onDragEnd: notesAction.orderList,
+  // onDragEnd: notesOperations.orderListSuccess,
 };
 
 export default connect(

@@ -21,7 +21,7 @@ function notesReducer(state = [], { type, payload }) {
       // console.log(payload.source.index); //откуда
 
       if (!payload.destination) {
-        return null;
+        return;
       }
       const result = Array.from(state);
       console.log(result);
